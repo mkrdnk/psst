@@ -1,0 +1,10 @@
+[project]
+name = "server"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "jamlib[starlette]>=4.2.1",
+    "starlette>=1.7.0",
+]
