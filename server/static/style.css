@@ -1,0 +1,105 @@
+:root {
+  color-scheme: light;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #272b29;
+  background: #fafaf8;
+  font-synthesis: none;
+  --muted: #656d68;
+  --border: #dce0db;
+  --accent: #3c6051;
+  --error: #a42f29;
+  --control-radius: 2px;
+  --font-mono: "Source Code Pro", "Noto Sans Mono", "DejaVu Sans Mono", monospace;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; line-height: 1.5; }
+button, input, textarea { font: inherit; }
+button, summary { cursor: pointer; }
+button:disabled { cursor: wait; opacity: 0.6; }
+button, summary, input, textarea { transition: color 150ms, border-color 150ms, background-color 150ms; }
+button, summary { font-family: var(--font-mono); }
+button:not(:disabled):active { outline: 1px solid var(--accent); outline-offset: 2px; }
+summary:hover { color: var(--accent); }
+summary:active { text-decoration: underline; text-underline-offset: 4px; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+h1, h2, p { margin: 0; }
+h1, h2 { font-size: 17px; font-weight: 600; }
+
+.shell { max-width: 680px; margin: 0 auto; padding: 0 28px 64px; }
+.site-header { display: flex; justify-content: space-between; align-items: center; min-height: 100px; margin-bottom: 24px; }
+.header-actions { display: flex; align-items: center; gap: 12px; }
+.language-switch { display: flex; }
+.language-switch button { min-width: 44px; }
+.language-switch [aria-pressed="true"] { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
+.wordmark { font-size: 29px; font-weight: 750; letter-spacing: -1.5px; text-decoration: none; }
+.button-quiet { padding: 10px 8px; border: 0; border-radius: var(--control-radius); background: none; color: var(--muted); font-size: 12px; min-height: 44px; }
+.button-quiet:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
+.loading { color: var(--muted); font-size: 14px; }
+.login-panel { max-width: 340px; margin: 56px 0; }
+.login-panel h1 { margin-bottom: 28px; }
+.login-panel label { display: block; font-family: var(--font-mono); font-size: 13px; margin-bottom: 8px; }
+.login-panel .button-primary { margin-top: 20px; }
+
+.device { margin-bottom: 30px; }
+.device-line { display: flex; justify-content: space-between; gap: 20px; align-items: baseline; }
+.device-status { display: flex; align-items: center; gap: 9px; font-family: var(--font-mono); font-size: 12px; padding-top: 10px; }
+.device-status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; background: #858b87; }
+.device-status[data-status="online"]::before { background: var(--accent); }
+.device-status[data-status="offline"]::before { background: #a46835; }
+.device-details { font-size: 12px; color: var(--muted); max-width: 270px; }
+.device-details summary { padding: 10px 0; min-height: 44px; border-radius: var(--control-radius); text-align: right; }
+.device-details dl { display: grid; grid-template-columns: auto 1fr; gap: 8px 16px; margin: 8px 0 12px; }
+.device-details dd { margin: 0; text-align: right; overflow-wrap: anywhere; }
+.device-details .hint { padding-bottom: 8px; }
+
+.compose h1 { margin-bottom: 14px; }
+input, textarea { display: block; width: 100%; padding: 12px 16px; border: 1px solid #b4bdb6; border-radius: var(--control-radius); background: #fff; color: inherit; }
+input:hover, textarea:hover { border-color: var(--muted); }
+input:focus, textarea:focus { border-color: var(--accent); }
+textarea { resize: vertical; min-height: 160px; max-height: 70vh; line-height: 1.6; }
+textarea::placeholder { color: #747c76; }
+textarea[readonly] { background: #f3f5f1; }
+textarea[aria-invalid="true"] { border-color: var(--error); }
+.compose-actions { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 12px 0; }
+.counter { font-family: var(--font-mono); font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.button-primary { min-height: 44px; min-width: 144px; padding: 10px 16px; border: solid var(--border); border-width: 1px 0; border-radius: 0; background: transparent; color: var(--accent); font-size: 14px; font-weight: 600; }
+.button-primary:hover:not(:disabled) { border-color: var(--accent); color: #272b29; }
+.hint { color: var(--muted); font-size: 12px; line-height: 1.6; }
+.feedback { margin-top: 12px; font-size: 13px; color: var(--accent); overflow-wrap: anywhere; }
+.feedback:empty { display: none; }
+#session-feedback:not(:empty) { margin-bottom: 16px; }
+.is-error { color: var(--error); }
+
+.history-section { margin-top: 44px; }
+.section-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+.message-history { margin: 0; padding: 0; list-style: none; }
+.message-card { padding: 20px 0; border-bottom: 1px solid var(--border); }
+.message-text { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 15px; line-height: 1.65; }
+.message-meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin-top: 7px; color: var(--muted); font-family: var(--font-mono); font-size: 12px; }
+.message-date { font-variant-numeric: tabular-nums; }
+.badge-received { color: var(--accent); }
+.badge-waiting { color: #865926; }
+.message-label { margin-left: auto; }
+.delivery-details summary { min-height: 24px; border-radius: var(--control-radius); }
+.delivery-details p { margin-top: 4px; }
+.delivery-note { margin-top: 18px; }
+.empty-state { padding: 24px 0; color: var(--muted); font-size: 14px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  button, summary, input, textarea { transition: none; }
+}
+
+@media (max-width: 480px) {
+  .shell { padding: 0 20px 40px; }
+  .site-header { min-height: 80px; margin-bottom: 12px; }
+  .device { margin-bottom: 22px; }
+  .device-line { flex-wrap: wrap; gap: 0 12px; }
+  .device-details { margin-left: auto; }
+  .device-details[open] { max-width: none; width: 100%; }
+  .history-section { margin-top: 36px; }
+  .message-label { margin-left: 0; }
+}

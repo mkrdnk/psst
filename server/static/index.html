@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#fafaf8">
+    <title>psst</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/i18n.js" defer></script>
+    <script src="/static/app.js" defer></script>
+  </head>
+  <body>
+    <div class="shell">
+      <header class="site-header">
+        <a class="wordmark" href="/" aria-label="PSST — главная" data-i18n-aria-label="home">psst.</a>
+        <div class="header-actions">
+          <div class="language-switch" role="group" aria-label="Язык интерфейса" data-i18n-aria-label="language">
+            <button id="language-ru" class="button-quiet" type="button" lang="ru" aria-label="Русский" aria-pressed="true">RU</button>
+            <button id="language-en" class="button-quiet" type="button" lang="en" aria-label="English" aria-pressed="false">EN</button>
+          </div>
+          <button id="logout" class="button-quiet" type="button" data-i18n="logout" hidden>Выйти</button>
+        </div>
+      </header>
+
+      <main id="main">
+        <p id="loading" class="loading" role="status" data-i18n="loading">Проверяем вход…</p>
+
+        <section id="login-view" class="login-panel" aria-labelledby="login-title" hidden>
+          <h1 id="login-title" data-i18n="login_title">Вход</h1>
+          <form id="login-form" method="post" action="/api/admin/login" novalidate>
+            <label for="password" data-i18n="password">Пароль</label>
+            <input id="password" name="password" type="password" autocomplete="current-password" required aria-describedby="login-feedback">
+            <p id="login-feedback" class="feedback" aria-live="polite" aria-atomic="true"></p>
+            <button id="login-submit" class="button-primary" type="submit" data-i18n="login">Войти</button>
+          </form>
+        </section>
+
+        <section id="dashboard" aria-label="Сообщения" data-i18n-aria-label="messages" hidden>
+          <div class="device">
+            <div class="device-line">
+              <p id="device-status" class="device-status" role="status" data-i18n="checking_device">Проверяем связь…</p>
+              <details class="device-details">
+                <summary data-i18n="details">Подробнее</summary>
+                <dl>
+                  <dt data-i18n="last_ping">Последний ping</dt>
+                  <dd id="device-last-seen">—</dd>
+                  <dt data-i18n="interval">Интервал</dt>
+                  <dd id="device-interval">—</dd>
+                </dl>
+                <p class="hint" data-i18n="offline_hint">Без ping дольше трёх интервалов устройство считается не в сети.</p>
+              </details>
+            </div>
+            <p id="sync-feedback" class="feedback" role="status"></p>
+          </div>
+          <p id="session-feedback" class="feedback" aria-live="polite" aria-atomic="true"></p>
+
+          <section class="compose" aria-labelledby="compose-title">
+            <h1 id="compose-title" data-i18n="message">Сообщение</h1>
+            <form id="message-form" method="post" action="/api/admin/messages" novalidate>
+              <label for="message" class="sr-only" data-i18n="message_text">Текст сообщения</label>
+              <textarea id="message" name="text" rows="5" required placeholder="Написать сообщение…" data-i18n-placeholder="message_placeholder" aria-describedby="message-hint message-counter message-feedback"></textarea>
+              <div class="compose-actions">
+                <span id="message-counter" class="counter">0 / 2000</span>
+                <button id="message-submit" class="button-primary" type="submit" data-i18n="send">Отправить</button>
+              </div>
+              <p id="message-hint" class="hint" data-i18n="replace_hint">Новое сообщение заменит предыдущее на устройстве.</p>
+              <p id="message-feedback" class="feedback" aria-live="polite" aria-atomic="true"></p>
+            </form>
+          </section>
+
+          <section class="history-section" aria-labelledby="history-title">
+            <div class="section-heading">
+              <h2 id="history-title" data-i18n="history">История</h2>
+              <span class="hint" data-i18n="latest_50">Последние 50</span>
+            </div>
+            <p id="history-empty" class="empty-state" data-i18n="empty_history">Пока нет сообщений.</p>
+            <ol id="message-history" class="message-history" aria-label="История сообщений, сначала новые" data-i18n-aria-label="history_label"></ol>
+            <p class="hint delivery-note" data-i18n="delivery_hint">«Доставлено» — устройство подтвердило получение, не прочтение.</p>
+          </section>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
