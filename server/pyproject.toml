@@ -1,10 +1,21 @@
 [project]
 name = "server"
 version = "0.1.0"
-description = "Add your description here"
+description = "A small message server for the PSST desk display"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "jamlib[starlette]>=4.2.1",
     "starlette>=1.7.0",
+    "uvicorn>=0.34",
 ]
+
+[dependency-groups]
+test = [
+    "httpx>=0.28",
+    "pytest>=8.3",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
